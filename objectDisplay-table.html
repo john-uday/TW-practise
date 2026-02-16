@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="d1" border="2px">
+        <tr><th>name</th><th>body</th></tr>
+    </table>
+    <script>
+        var students=[{name:"uday",sub:"python" },
+        {name:"karthik",sub:"java" },
+        {name:"uday",sub:"c++" }
+    ];
+
+        for(i=0;i<students.length;i++){
+            var table=document.getElementById("d1");
+            var trow=document.createElement("tr")
+            var sname=document.createElement("td");
+            var ssub=document.createElement("td");
+            sname.innerText=students[i].name;
+            ssub.innerText=students[i].sub;
+
+            trow.appendChild(sname);
+            trow.appendChild(ssub);
+            table.appendChild(trow);  
+        }
+    </script>
+</body>
+</html>

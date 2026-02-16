@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="d1"></ul>
+    <script>
+        var arr=["java script","python,","c++"];
+
+        for(i=0;i<arr.length;i++){
+            var lst=document.getElementById("d1");
+            var sub=document.createElement("li");
+            sub.innerText=arr[i];
+            lst.appendChild(sub);
+            
+            console.log(arr[i]);    
+        }
+    </script>
+</body>
+</html>

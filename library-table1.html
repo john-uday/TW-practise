@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Table</title>
+</head>
+<body>
+
+<input type="text" id="search" placeholder="Search books...">
+
+<table border="1" id="bookTable">
+  <thead>
+    <tr></tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<button onclick="prevPage()">Prev</button>
+<button onclick="nextPage()">Next</button>
+
+<script>
+const API_URL = "https://raw.githubusercontent.com/edupoly/mongodb-data-sets/main/books.json";
+
+let books = [];
+let filteredBooks = [];
+let cp = 1;
+const rpp = 10;
+let SortCol = "";
+let sortDir = 1;
+
+async function fetchBooks() {
+  const res = await fetch(API_URL);
+  books = await res.json();
+  filteredBooks = [...books];
+
+  generateHeaders(books[0]);
+  displayTable();
+}
+
+function generateHeaders(obj) {
+  const theadRow = document.querySelector("#bookTable thead tr");
+  theadRow.innerHTML = "";
+
+  Object.keys(obj).forEach(key => {
+    const th = document.createElement("th");
+    th.textContent = key;
+    th.addEventListener("click", () => sortTable(key));
+    theadRow.appendChild(th);
+  });
+}
+
+function displayTable() {
+  const tbody = document.querySelector("#bookTable tbody");
+  tbody.innerHTML = "";
+  const st = (cp - 1) * rpp;
+  const ed = st + rpp;
+  const pageData = filteredBooks.slice(st, ed);
+
+  pageData.forEach(book => {
+    const tr = document.createElement("tr");
+
+    Object.keys(book).forEach(key => {
+      const td = document.createElement("td");
+      td.textContent = book[key];
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+}
+
+// Pagination
+function nextPage() {p
+  if (cp * rpp < filteredBooks.length) {
+    cp++;
+    displayTable();
+  }
+}
+
+function prevPage() {
+  if (cp > 1) {
+    cp--;
+    displayTable();
+  }
+}
+
+function sortTable(column) {
+  if (SortCol === column) {
+    sortDir *= -1;
+  } else {
+    sortDir = 1;
+  }
+SortCol = column;
+  filteredBooks.sort((a, b) => {
+    if (a[column] < b[column]) return -1 * sortDir;
+    if (a[column] > b[column]) return 1 * sortDir;
+    return 0;
+  });
+  displayTable();
+}
+document.getElementById("search").addEventListener("input", function(e) {
+  const value = e.target.value.toLowerCase();
+
+  filteredBooks = books.filter(book =>
+    Object.values(book).some(val =>
+      val.toString().toLowerCase().includes(value)
+    )
+  );
+  currentPage = 1;
+  displayTable();
+});
+fetchBooks();
+</script>
+
+</body>
+
+</html>

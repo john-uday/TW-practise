@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* navbar */
+.navbar {
+  background: #111;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* logo */
+.logo {
+  font-size: 1.2rem;
+}
+
+/* hide checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* menu (desktop) */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1.7rem;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+/* hamburger hidden on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+/* 📱 mobile view */
+@media (max-width: 768px) {
+
+  /* show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* hide menu by default */
+  .menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #222;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    display: none;
+  }
+
+  .menu li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #333;
+  }
+
+  /* show menu when checked */
+  #menu-toggle:checked ~ .menu {
+    display: flex;
+  }
+}
+    </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Praveen</div>
+
+    <!-- checkbox -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- hamburger icon -->
+    <label for="menu-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- menu -->
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <h1>gcbcvb bjv</h1>
+    <h1>gcbcvb bjv</h1>
+   
+</body>
+</html>

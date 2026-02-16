@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <form name="sform" onsubmit="handleSubmit(event)">
+        Full Name:
+        <br>
+        <input type="text" id="name">
+        <br>
+        Gender:
+        <br>
+        <input type="radio" name="gender" value="F" id="female"><label for="female">:Female</label>
+        <input type="radio" name="gender" value="M"><label>:Male</label>
+        <input type="radio" name="gender" value="O"><label>:Others</label>
+        <br>
+        Technology:
+        <br>
+
+        <input type="checkbox" name="technology" value="js">:Javascript
+        <input type="checkbox" name="technology" value="rjs">:ReactJS
+        <input type="checkbox" name="technology" value="ajs">:Angular
+        <input type="checkbox" name="technology" value="njs">:NodeJS
+        <br>
+        Address:
+        <br>
+
+        <textarea id="address"></textarea>
+        <br>
+        <button>Show Student</button>
+    </form>
+    <h1>Entered Text:<span id="d1"></span></h1>
+     <table id="tb"><tr><th>name</th><th>gender</th><th>technology</th><th>address</th></tr></table>
+
+    <script> 
+        var newStudent = {
+            fullname: '',
+            gender: "",
+            technologies: [],
+            address: ""
+        }
+        function handleSubmit(ev) {
+            ev.preventDefault()
+           // console.log(document.sform.gender.value);
+            newStudent.fullname =document.getElementById("name").value
+           var x = document.getElementsByName('gender')
+            x.forEach(function (el) {
+                if (el.checked) {
+                     newStudent.gender =el.value;
+                }
+            })
+           
+            document.sform.technology.forEach(function (el) {
+                if (el.checked) {
+                    newStudent.technologies.push(el.value)
+                }
+            })
+            newStudent.address =document.getElementById("address").value
+            console.log(newStudent);
+        }
+        var tb=document.getElementById("tb");
+        var trow=document.createElement("tr");
+         var td=document.createElement("td");
+        td.appendChild(newStudent.fullname);
+        trow.appendChild(td);
+          td.appendChild(newStudent.gender);
+           trow.appendChild(td);
+           td.appendChild(newStudent.technologies);
+           trow.appendChild(td);
+           
+          document.body.appendChild(tb);
+          // newStudent.technologies.forEach((el)=> trow.appendChild(el))
+    </script>
+</body>
+
+</html>

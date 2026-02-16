@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="d1" onclick="fun()">
+    <script>
+        // var arr=["https://wallpaperaccess.com/full/858243.jpg",
+        // "https://wallpapercave.com/wp/wp6154945.jpg",
+        // "https://wallpapercave.com/wp/wp9352282.jpg"]
+        // function fun(){
+        //   var image=document.getElementById("d1");
+        // for(var i=0;i<arr.length;i++){
+        //     image.src=arr[i];
+        // document.body.appendChild(image);
+        // }
+
+        // fun();
+        // 
+        let i = 10;
+        function s() {
+            console.log(i)//10
+            i = 11
+            console.log(i)//11
+            console.log(i)//11
+            let x = 15
+            console.log(x)//15
+        }
+            
+    
+
+        s()
+
+        console.log(i)//11
+        console.log(i)//11
+        console.log(x)//ReferenceError
+    </script>
+</body>
+
+</html>

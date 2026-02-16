@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var html=new XMLHttpRequest();
+html.open("GET","https://dummyjson.com/product");
+console.dir(html);
+html.send();
+html.onloadend=function(){
+    alert("load ethali ramana");
+}
+
+    </script>
+</body>
+</html>

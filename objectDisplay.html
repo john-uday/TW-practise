@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="d1"></ul>
+    <script>
+        var students=[{name:"uday",sub:"python" },
+        {name:"karthik",sub:"java" },
+        {name:"uday",sub:"c++" }
+    ];
+
+        for(i=0;i<students.length;i++){
+            var lst=document.getElementById("d1");
+            var data=document.createElement("li");
+            var sname=document.createElement("h1");
+            var ssub=document.createElement("h2");
+            sname.innerText=students[i].name;
+            ssub.innerText=students[i].sub;
+
+            data.appendChild(sname);
+            data.appendChild(ssub);
+            lst.appendChild(data);  
+        }
+    </script>
+</body>
+</html>
