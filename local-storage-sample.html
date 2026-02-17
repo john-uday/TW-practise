@@ -9,40 +9,46 @@
 
 <body>
     <input type="text" id="ipd">
-    <button onclick="gentodo()">add todo</button>
-    <button onclick="deltodo()">delete item</button>
+    <button onclick="createtodo()">add todo</button>
     <ul id="todolist"></ul>
     <script>
         var todos = [];
         var ipd = document.getElementById("ipd");
-        var todolst = document.getElementById("todolist");
+        var todolist = document.getElementById("todolist");
         if (window.localStorage.getItem("todos")) {
             todos = JSON.parse(window.localStorage.getItem("todos"));
-            todos.forEach(oldlst => {
+        }
+          gentodo();
+        function gentodo(){
+           todolist.innerText="";
+            todos.forEach((li,i) => {
                 var oldlist = document.createElement("li");
-                oldlist.textContent = oldlst;
-                todolst.appendChild(oldlist);
+                var btn=document.createElement("button");
+                btn.innerHTML="delete";
+                oldlist.innerText=li;
+                btn.addEventListener("click",()=>{
+                    todos.splice(i,1);
+                    window.localStorage.setItem("todos",JSON.stringify(todos));
+                    gentodo();
+                }
+                )
+                oldlist.appendChild(btn);
+                todolist.appendChild(oldlist);
+
             })
-        }
-        function gentodo() {
-            var todo = document.createElement("li");
-            if (ipd.value.trim() === "") return;
-            todo.textContent = ipd.value;
-            todolst.appendChild(todo);
+    }
+        function createtodo() {
+            var ipd=document.getElementById("ipd");
             todos.push(ipd.value);
-            localStorage.setItem("todos", JSON.stringify(todos));
+            window.localStorage.setItem("todos",JSON.stringify(todos));
+             
+            gentodo();
+ 
 
-            // var delit=document.querySelector("#todolist li");
-            //  delit.seteventlistener(e=>{
-            //     e.target.value="";
-            //     localStorage.setItem("todos", "");
-            //  })
 
         }
-        function deltodo() {
-             localStorage.setItem("todos", "");
-         }
-        gentodo();
+       
+      
 
     </script>
 </body>

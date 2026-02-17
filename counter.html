@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="counter">0</h1>
+    <button id="inc">increament</button>
+    <button id="dec">decreament</button>
+    <script>
+        var c=0;
+        var inc=document.getElementById("inc");
+         var dec=document.getElementById("dec");
+          var counter=document.getElementById("counter");
+        if(localStorage.getItem("counter")){
+            c=localStorage.getItem("counter")
+            counter.innerText=c;
+        }
+         inc.addEventListener("click",()=>{
+           c++;
+             counter.innerText= c; 
+              localStorage.setItem("counter",JSON.stringify(c))
+
+         })
+          dec.addEventListener("click",()=>{
+           c--;
+             counter.innerText= c; 
+               localStorage.setItem("counter",JSON.stringify(c))
+
+         })
+        
+    </script>
+
+</body>
+</html>
