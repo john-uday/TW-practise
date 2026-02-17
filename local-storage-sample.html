@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipd">
+    <button onclick="gentodo()">add todo</button>
+    <button onclick="deltodo()">delete item</button>
+    <ul id="todolist"></ul>
+    <script>
+        var todos = [];
+        var ipd = document.getElementById("ipd");
+        var todolst = document.getElementById("todolist");
+        if (window.localStorage.getItem("todos")) {
+            todos = JSON.parse(window.localStorage.getItem("todos"));
+            todos.forEach(oldlst => {
+                var oldlist = document.createElement("li");
+                oldlist.textContent = oldlst;
+                todolst.appendChild(oldlist);
+            })
+        }
+        function gentodo() {
+            var todo = document.createElement("li");
+            if (ipd.value.trim() === "") return;
+            todo.textContent = ipd.value;
+            todolst.appendChild(todo);
+            todos.push(ipd.value);
+            localStorage.setItem("todos", JSON.stringify(todos));
+
+            // var delit=document.querySelector("#todolist li");
+            //  delit.seteventlistener(e=>{
+            //     e.target.value="";
+            //     localStorage.setItem("todos", "");
+            //  })
+
+        }
+        function deltodo() {
+             localStorage.setItem("todos", "");
+         }
+        gentodo();
+
+    </script>
+</body>
+
+</html>

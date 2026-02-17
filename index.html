@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>John Uday | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1e293b;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #38bdf8;
+    }
+
+    header p {
+      margin-top: 5px;
+      color: #cbd5e1;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #38bdf8;
+      border-bottom: 2px solid #38bdf8;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #334155;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e293b;
+      margin-top: 40px;
+      color: #94a3b8;
+    }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+    table{
+      width:85%;
+      
+    }
+    table{
+      border:1px solid white;
+      overflow: hidden;
+    }
+    tr{
+      border:1px solid white;
+    }
+   
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>John Uday</h1>
+  <p>Computer Science Student | Web Developer | Tech Enthusiast</p>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I am a passionate Computer Science student interested in Web Development,
+      Programming, and Modern Technologies. I enjoy building clean and
+      functional applications.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="card">
+    HTML, CSS, JavaScript, Git, C, Data Structures
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Project Title</th>
+        <th>Live Demo</th>
+        <th>Source Code</th>
+      </tr>
+    </thead>
+    <tbody id="projectTable">
+    </tbody>
+  </table>
+</section>
+
+<script src="projects.js"></script>
+<script src="script.js"></script>
+
+
+<section>
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: your-email@example.com</p>
+    <p>
+      <a href="https://github.com/john-uday" target="_blank">GitHub</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2026 John Uday | Portfolio
+</footer>
+
+</body>
+</html>
