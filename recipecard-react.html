@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.28.4/babel.min.js"></script>
+    <script src="recipes.js"></script>
+    <style>
+         .recipes {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 150px;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+
+        }
+
+        .card img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function RecipeCard(props){
+            return(
+                <div class="card">   
+                      <img src={props.r.image} alt=""/> 
+                      <h4>{props.r.name}</h4> 
+                      <h4>rating:{props.r.rating}</h4> 
+                </div>
+            )
+        }
+        function RecipePage(){
+            return(
+               <div class="recipes">{
+                allRecipes.recipes.map((recipe)=>{
+                    return <RecipeCard r={recipe}/>
+                })
+               }</div>
+            )
+        }
+        ReactDOM.render(<div><RecipePage/></div>,document.getElementById("root"));
+    </script>
+</body>
+</html>

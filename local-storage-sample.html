@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <input type="text" id="ipd">
-    <button onclick="createtodo()">add todo</button>
+    <button id="btn1" onclick="createtodo()">add todo</button>
     <ul id="todolist"></ul>
     <script>
         var todos = [];
+        var status=-1;
+        var btn1 = document.getElementById("btn1");
         var ipd = document.getElementById("ipd");
         var todolist = document.getElementById("todolist");
         if (window.localStorage.getItem("todos")) {
             todos = JSON.parse(window.localStorage.getItem("todos"));
         }
+
+        if(ipd.value===""){
+            btn1.style.visibility="hidden";
+        }
+        ipd.addEventListener("keyup",()=>
+    {
+        if(ipd.value===""){
+            btn1.style.visibility="hidden";
+        }
+           else{btn1.style.visibility="visible";}
+    })
+         
+
           gentodo();
         function gentodo(){
            todolist.innerText="";
             todos.forEach((li,i) => {
                 var oldlist = document.createElement("li");
+                 var statusbtn=document.createElement("statusbtn");
                 var btn=document.createElement("button");
+               
                 btn.innerHTML="delete";
+                status.i
                 oldlist.innerText=li;
                 btn.addEventListener("click",()=>{
                     todos.splice(i,1);
                     window.localStorage.setItem("todos",JSON.stringify(todos));
                     gentodo();
+                })
+                statusbtn.addEventListener("click",()=>{
+                    status= status*(-1);
+                    if(status==-1){
+                         statusbtn.style.backgroundColor = "orange"; 
+                        
+                        btn1.style.visibility="visible";
+        }
+                    }
+                    else{
+                         statusbtn.style.backgroundColor = "orange"; 
+                    }
+                    gentodo();
                 }
                 )
+
                 oldlist.appendChild(btn);
                 todolist.appendChild(oldlist);
-
             })
     }
         function createtodo() {
             var ipd=document.getElementById("ipd");
             todos.push(ipd.value);
-            window.localStorage.setItem("todos",JSON.stringify(todos));
-             
+            window.localStorage.setItem("todos",JSON.stringify(todos));             
             gentodo();
- 
-
-
         }
-       
-      
-
     </script>
 </body>
 

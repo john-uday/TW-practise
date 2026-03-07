@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.28.4/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Todolist(){
+            const [ipd,setipd]=React.useState("");
+            const [todos,settodo]=React.useState([]);
+              
+            function getipd(ev){
+              setipd(ev.target.value);     
+            }
+            function addtodo(){
+                settodo([...todos,ipd]);
+            }
+            function deletetodo(deleteindex){
+                var newtodo= todos.filter((t,i)=>{
+                   return deleteindex!=i
+                })
+               // console.log(deleteindex)
+               // console.log(newtodo);
+                settodo([...newtodo])
+            }
+            return(<div>
+                    <input type="text" onKeyUp={getipd}/>
+                    <h1>{ipd}</h1>
+                    <button onClick={addtodo}>add</button>
+                    <ul>{
+                        todos.map((todo,i)=>{
+                         return (<li key={i}>{todo} <button onClick={()=>deletetodo(i)}>delete</button></li> )  
+                            
+                        })
+                    }</ul>
+                    </div>);
+            
+        }
+        ReactDOM.render(<Todolist/>,document.getElementById("root"));
+
+
+    //     var ind=""
+    //     const todos=[]
+    //     function fun(ev){
+    //        ind=ev.target.value;
+    //        console.log(ind) 
+    //     }
+    //     function fun2(){
+    //         todos.push(ind);
+    //         console.log(todos);
+    //         gentodo();
+    //     }
+    //    function gentodo(){
+    //      const jsx=<div>
+    //     <input type="text" onKeyUp={(ev)=>fun(ev)}/>
+    //     <button onClick={()=>fun2()}>add</button>
+    //    <ul>{
+    //         todos.map((todo)=>{
+    //             return <li>{todo}</li>
+    //         })
+    //     }</ul>
+    //     </div>
+    //      ReactDOM.render(jsx,document.getElementById("root"))
+    //    }
+       
+    //    gentodo();
+    </script>
+</body>
+</html>
